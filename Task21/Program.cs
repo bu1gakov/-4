@@ -7,27 +7,64 @@
 // A (7,-5, 0); B (1,-1,9) -> 11.53
 
 
-int x1 = Coordinate("x", "A");
-int y1 = Coordinate("y", "A");
-int z1 = Coordinate("z", "A");
-int x2 = Coordinate("x", "B");
-int y2 = Coordinate("y", "B");
-int z2 = Coordinate("z", "B");
+static void Main(string[] args)
+    {
+        char selection;
+        Double x1, x2, y1, y2, z1, z2, distance;
 
-int Coordinate(string coorName, string pointName)
-{
-    Console.Write($"Введите координату {coorName} точки {pointName}: ");
-    return Convert.ToInt16(Console.ReadLine());
+        Console.WriteLine("1. Расстояние между двумя точками на плоскости.");
+        Console.WriteLine("2. Расстояние между двумя точками в пространстве.");
+        Console.WriteLine("Выберите нужный пункт (1 или 2):");
+
+        selection = Convert.ToChar(Console.ReadLine());
+
+        switch (selection)
+        {
+            case '1':
+                Console.Write("Введите координаты x1: ");
+                x1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты x2: ");
+                x2 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты y1: ");
+                y1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты y2: ");
+                y2 = Convert.ToDouble(Console.ReadLine());
+
+                distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                Console.WriteLine($"Расстояние между двумя точками на плоскости равно {distance}");
+                Console.ReadKey();
+                break;
+            case '2':
+                Console.Write("Введите координаты x1: ");
+                x1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты x2: ");
+                x2 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты y1: ");
+                y1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты y2: ");
+                y2 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты z1: ");
+                z1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Введите координаты z2: ");
+                z2 = Convert.ToDouble(Console.ReadLine());
+
+                distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2));
+                Console.WriteLine($"Расстояние между двумя точками в пространстве равно {distance}");
+                Console.ReadKey();
+                break;
+            default:
+                Console.WriteLine("Вы ввели неверный символ");
+                Console.ReadKey();
+                break;
+        }
+
+    }
 }
-
-double Decision(double x1, double x2, 
-                double y1, double y2, 
-                double z1, double z2){
-  return Math.Sqrt(Math.Pow((x2-x1), 2) + 
-                   Math.Pow((y2-y1), 2) + 
-                   Math.Pow((z2-z1), 2));
-}
-
-double segmentLength =  Math.Round (Decision(x1, x2, y1, y2, z1, z2), 2 );
-
-Console.WriteLine($"Длина отрезка  {segmentLength}");
